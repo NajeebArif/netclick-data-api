@@ -24,7 +24,7 @@ public class Film implements Serializable {
 
 	private String description;
 
-	private Object fulltext;
+	private String fulltext;
 
 	@Column(name="last_update")
 	private Timestamp lastUpdate;
@@ -34,7 +34,7 @@ public class Film implements Serializable {
 	private String rating;
 
 	@Column(name="release_year")
-	private Object releaseYear;
+	private String releaseYear;
 
 	@Column(name="rental_duration")
 	private Integer rentalDuration;
@@ -45,27 +45,27 @@ public class Film implements Serializable {
 	@Column(name="replacement_cost")
 	private BigDecimal replacementCost;
 
-	@Column(name="special_features")
-	private Array specialFeatures;
+//	@Column(name="special_features")
+//	private List<String> specialFeatures;
 
 	private String title;
 
 	//bi-directional many-to-one association to Language
-	@ManyToOne
-	@JoinColumn(name="language_id")
-	private Language language;
-
-	//bi-directional many-to-one association to FilmActor
-	@OneToMany(mappedBy="film")
-	private List<FilmActor> filmActors;
-
-	//bi-directional many-to-one association to FilmCategory
-	@OneToMany(mappedBy="film")
-	private List<FilmCategory> filmCategories;
-
-	//bi-directional many-to-one association to Inventory
-	@OneToMany(mappedBy="film")
-	private List<Inventory> inventories;
+//	@ManyToOne
+//	@JoinColumn(name="language_id")
+//	private Language language;
+//
+//	//bi-directional many-to-one association to FilmActor
+//	@OneToMany(mappedBy="film", fetch = FetchType.LAZY)
+//	private List<FilmActor> filmActors;
+//
+//	//bi-directional many-to-one association to FilmCategory
+//	@OneToMany(mappedBy="film", fetch = FetchType.LAZY)
+//	private List<FilmCategory> filmCategories;
+//
+//	//bi-directional many-to-one association to Inventory
+//	@OneToMany(mappedBy="film", fetch = FetchType.LAZY)
+//	private List<Inventory> inventories;
 
 	public Film() {
 	}
@@ -86,11 +86,11 @@ public class Film implements Serializable {
 		this.description = description;
 	}
 
-	public Object getFulltext() {
+	public String getFulltext() {
 		return this.fulltext;
 	}
 
-	public void setFulltext(Object fulltext) {
+	public void setFulltext(String fulltext) {
 		this.fulltext = fulltext;
 	}
 
@@ -118,11 +118,11 @@ public class Film implements Serializable {
 		this.rating = rating;
 	}
 
-	public Object getReleaseYear() {
+	public String getReleaseYear() {
 		return this.releaseYear;
 	}
 
-	public void setReleaseYear(Object releaseYear) {
+	public void setReleaseYear(String releaseYear) {
 		this.releaseYear = releaseYear;
 	}
 
@@ -150,13 +150,13 @@ public class Film implements Serializable {
 		this.replacementCost = replacementCost;
 	}
 
-	public Array getSpecialFeatures() {
-		return this.specialFeatures;
-	}
-
-	public void setSpecialFeatures(Array specialFeatures) {
-		this.specialFeatures = specialFeatures;
-	}
+//	public List<String> getSpecialFeatures() {
+//		return this.specialFeatures;
+//	}
+//
+//	public void setSpecialFeatures(List<String> specialFeatures) {
+//		this.specialFeatures = specialFeatures;
+//	}
 
 	public String getTitle() {
 		return this.title;
@@ -166,78 +166,78 @@ public class Film implements Serializable {
 		this.title = title;
 	}
 
-	public Language getLanguage() {
-		return this.language;
-	}
-
-	public void setLanguage(Language language) {
-		this.language = language;
-	}
-
-	public List<FilmActor> getFilmActors() {
-		return this.filmActors;
-	}
-
-	public void setFilmActors(List<FilmActor> filmActors) {
-		this.filmActors = filmActors;
-	}
-
-	public FilmActor addFilmActor(FilmActor filmActor) {
-		getFilmActors().add(filmActor);
-		filmActor.setFilm(this);
-
-		return filmActor;
-	}
-
-	public FilmActor removeFilmActor(FilmActor filmActor) {
-		getFilmActors().remove(filmActor);
-		filmActor.setFilm(null);
-
-		return filmActor;
-	}
-
-	public List<FilmCategory> getFilmCategories() {
-		return this.filmCategories;
-	}
-
-	public void setFilmCategories(List<FilmCategory> filmCategories) {
-		this.filmCategories = filmCategories;
-	}
-
-	public FilmCategory addFilmCategory(FilmCategory filmCategory) {
-		getFilmCategories().add(filmCategory);
-		filmCategory.setFilm(this);
-
-		return filmCategory;
-	}
-
-	public FilmCategory removeFilmCategory(FilmCategory filmCategory) {
-		getFilmCategories().remove(filmCategory);
-		filmCategory.setFilm(null);
-
-		return filmCategory;
-	}
-
-	public List<Inventory> getInventories() {
-		return this.inventories;
-	}
-
-	public void setInventories(List<Inventory> inventories) {
-		this.inventories = inventories;
-	}
-
-	public Inventory addInventory(Inventory inventory) {
-		getInventories().add(inventory);
-		inventory.setFilm(this);
-
-		return inventory;
-	}
-
-	public Inventory removeInventory(Inventory inventory) {
-		getInventories().remove(inventory);
-		inventory.setFilm(null);
-
-		return inventory;
-	}
+//	public Language getLanguage() {
+//		return this.language;
+//	}
+//
+//	public void setLanguage(Language language) {
+//		this.language = language;
+//	}
+//
+//	public List<FilmActor> getFilmActors() {
+//		return this.filmActors;
+//	}
+//
+//	public void setFilmActors(List<FilmActor> filmActors) {
+//		this.filmActors = filmActors;
+//	}
+//
+//	public FilmActor addFilmActor(FilmActor filmActor) {
+//		getFilmActors().add(filmActor);
+//		filmActor.setFilm(this);
+//
+//		return filmActor;
+//	}
+//
+//	public FilmActor removeFilmActor(FilmActor filmActor) {
+//		getFilmActors().remove(filmActor);
+//		filmActor.setFilm(null);
+//
+//		return filmActor;
+//	}
+//
+//	public List<FilmCategory> getFilmCategories() {
+//		return this.filmCategories;
+//	}
+//
+//	public void setFilmCategories(List<FilmCategory> filmCategories) {
+//		this.filmCategories = filmCategories;
+//	}
+//
+//	public FilmCategory addFilmCategory(FilmCategory filmCategory) {
+//		getFilmCategories().add(filmCategory);
+//		filmCategory.setFilm(this);
+//
+//		return filmCategory;
+//	}
+//
+//	public FilmCategory removeFilmCategory(FilmCategory filmCategory) {
+//		getFilmCategories().remove(filmCategory);
+//		filmCategory.setFilm(null);
+//
+//		return filmCategory;
+//	}
+//
+//	public List<Inventory> getInventories() {
+//		return this.inventories;
+//	}
+//
+//	public void setInventories(List<Inventory> inventories) {
+//		this.inventories = inventories;
+//	}
+//
+//	public Inventory addInventory(Inventory inventory) {
+//		getInventories().add(inventory);
+//		inventory.setFilm(this);
+//
+//		return inventory;
+//	}
+//
+//	public Inventory removeInventory(Inventory inventory) {
+//		getInventories().remove(inventory);
+//		inventory.setFilm(null);
+//
+//		return inventory;
+//	}
 
 }

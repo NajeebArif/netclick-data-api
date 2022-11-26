@@ -27,12 +27,12 @@ public class Inventory implements Serializable {
 	private Integer storeId;
 
 	//bi-directional many-to-one association to Film
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="film_id")
 	private Film film;
 
 	//bi-directional many-to-one association to Rental
-	@OneToMany(mappedBy="inventory")
+	@OneToMany(mappedBy="inventory", fetch = FetchType.LAZY)
 	private List<Rental> rentals;
 
 	public Inventory() {

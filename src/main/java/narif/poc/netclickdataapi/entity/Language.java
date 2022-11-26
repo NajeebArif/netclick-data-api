@@ -10,8 +10,8 @@ import java.util.List;
  * The persistent class for the language database table.
  * 
  */
-@Entity
-@NamedQuery(name="Language.findAll", query="SELECT l FROM Language l")
+//@Entity
+//@NamedQuery(name="Language.findAll", query="SELECT l FROM Language l")
 public class Language implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -26,7 +26,7 @@ public class Language implements Serializable {
 	private String name;
 
 	//bi-directional many-to-one association to Film
-	@OneToMany(mappedBy="language")
+	@OneToMany(mappedBy="language", fetch = FetchType.LAZY)
 	private List<Film> films;
 
 	public Language() {
@@ -63,19 +63,19 @@ public class Language implements Serializable {
 	public void setFilms(List<Film> films) {
 		this.films = films;
 	}
-
-	public Film addFilm(Film film) {
-		getFilms().add(film);
-		film.setLanguage(this);
-
-		return film;
-	}
-
-	public Film removeFilm(Film film) {
-		getFilms().remove(film);
-		film.setLanguage(null);
-
-		return film;
-	}
+//
+//	public Film addFilm(Film film) {
+//		getFilms().add(film);
+//		film.setLanguage(this);
+//
+//		return film;
+//	}
+//
+//	public Film removeFilm(Film film) {
+//		getFilms().remove(film);
+//		film.setLanguage(null);
+//
+//		return film;
+//	}
 
 }
