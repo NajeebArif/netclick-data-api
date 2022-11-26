@@ -1,5 +1,7 @@
 package narif.poc.netclickdataapi.entity;
 
+import net.minidev.json.annotate.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -10,8 +12,8 @@ import java.util.List;
  * The persistent class for the language database table.
  * 
  */
-//@Entity
-//@NamedQuery(name="Language.findAll", query="SELECT l FROM Language l")
+@Entity
+@NamedQuery(name="Language.findAll", query="SELECT l FROM Language l")
 public class Language implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -26,8 +28,9 @@ public class Language implements Serializable {
 	private String name;
 
 	//bi-directional many-to-one association to Film
-	@OneToMany(mappedBy="language", fetch = FetchType.LAZY)
-	private List<Film> films;
+//	@OneToMany(mappedBy="language", fetch = FetchType.LAZY)
+//	@JsonIgnore
+//	private List<Film> films;
 
 	public Language() {
 	}
@@ -56,13 +59,13 @@ public class Language implements Serializable {
 		this.name = name;
 	}
 
-	public List<Film> getFilms() {
-		return this.films;
-	}
-
-	public void setFilms(List<Film> films) {
-		this.films = films;
-	}
+//	public List<Film> getFilms() {
+//		return this.films;
+//	}
+//
+//	public void setFilms(List<Film> films) {
+//		this.films = films;
+//	}
 //
 //	public Film addFilm(Film film) {
 //		getFilms().add(film);

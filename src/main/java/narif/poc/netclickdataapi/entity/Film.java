@@ -51,9 +51,9 @@ public class Film implements Serializable {
 	private String title;
 
 	//bi-directional many-to-one association to Language
-//	@ManyToOne
-//	@JoinColumn(name="language_id")
-//	private Language language;
+	@OneToOne
+	@JoinColumn(name="language_id")
+	private Language language;
 //
 //	//bi-directional many-to-one association to FilmActor
 //	@OneToMany(mappedBy="film", fetch = FetchType.LAZY)
@@ -166,13 +166,13 @@ public class Film implements Serializable {
 		this.title = title;
 	}
 
-//	public Language getLanguage() {
-//		return this.language;
-//	}
-//
-//	public void setLanguage(Language language) {
-//		this.language = language;
-//	}
+	public Language getLanguage() {
+		return this.language;
+	}
+
+	public void setLanguage(Language language) {
+		this.language = language;
+	}
 //
 //	public List<FilmActor> getFilmActors() {
 //		return this.filmActors;
