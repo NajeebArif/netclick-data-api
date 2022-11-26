@@ -8,5 +8,5 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     url: "jdbc:postgresql://localhost:5432/dvdrental"
-    username: postgres
+    username: narif
     password: postgres
